@@ -17,7 +17,6 @@ function App() {
   },[])
 
   const Submit = () => {
-    // axios.post('http://localhost:4800/createUser', {name, age})
     axios.post('https://backend-d84p.onrender.com/createUser', { withCredentials: true }, {name, age})
     .then((users) =>{
       console.log(users)
