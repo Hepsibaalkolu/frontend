@@ -23,18 +23,15 @@ function App() {
     //   console.log(users)
     // })
     // .catch(err => console.log(err))
-    app.post("/createUser", async (req, res) => {
-      try {
-        console.log("Incoming data:", req.body); // Add this
-        const user = req.body;
-        const newUser = new UserModel(user);
-        await newUser.save();
-        res.status(201).json(newUser);
-      } catch (err) {
-        console.error("Error creating user:", err);
-        res.status(500).json({ error: "Failed to create user", details: err.message });
-      }
-    });
+    axios.post(
+      'https://backend-d84p.onrender.com/createUser',
+      { name, age }, // This is the request body
+      { withCredentials: true } // This is the config
+    )
+    .then((users) => {
+      console.log(users);
+    })
+    .catch(err => console.log(err));
   }
   
 
